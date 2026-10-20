@@ -1,0 +1,252 @@
+:root {
+  color-scheme: dark;
+  font-family: "Yu Gothic", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+  background: #1b1119;
+  color: #f7ede4;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: radial-gradient(ellipse at 50% 0, #39202e 0, #21151e 48%, #140e14 100%);
+  font-size: 16px;
+  line-height: 1.8;
+}
+button, input { font: inherit; }
+button { cursor: pointer; }
+.container {
+  width: min(100%, 720px);
+  margin: 0 auto;
+  padding: 26px 14px 64px;
+}
+.invitation {
+  text-align: center;
+  padding: 42px 12px 34px;
+  border-top: 1px solid #80515e;
+  border-bottom: 1px solid #80515e;
+}
+.eyebrow {
+  font-size: 11px;
+  letter-spacing: .24em;
+  color: #d4aaa0;
+  font-weight: 700;
+}
+.invitation h1 {
+  margin: 13px 0 9px;
+  font-family: "Yu Mincho", "Hiragino Mincho ProN", serif;
+  font-size: clamp(24px, 6vw, 36px);
+  letter-spacing: .09em;
+  line-height: 1.6;
+  font-weight: 700;
+}
+.invitation p { margin: 9px 0; }
+.invitation .small-note { margin-top: 21px; font-size: 13px; color: #ceafb2; }
+.flourish, .ending-decoration { color: #bc8292; letter-spacing: .16em; }
+.progress {
+  background: #2b1e29;
+  border: 1px solid #6d4656;
+  border-radius: 9px;
+  padding: 14px 18px;
+  margin: 25px 0;
+}
+.progress-head { display: flex; justify-content: space-between; gap: 10px; font-size: 13px; }
+.progress-head strong { color: #f0c9bd; }
+.progress-track { margin-top: 10px; height: 6px; background: #4d3240; overflow: hidden; border-radius: 8px; }
+.progress-bar { height: 100%; width: 0; border-radius: 8px; background: linear-gradient(90deg, #af536a, #edb29b); transition: width .35s ease; }
+.stage { margin: 20px 0; scroll-margin-top: 12px; }
+.stage[hidden], .ending[hidden] { display: none !important; }
+.puzzle-details {
+  background: #362530;
+  border: 1px solid #875263;
+  border-radius: 12px;
+  overflow: hidden;
+}
+.puzzle-details > summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 18px;
+  font-size: 18px;
+  font-weight: 700;
+  list-style: none;
+  cursor: pointer;
+  user-select: none;
+}
+.puzzle-details > summary::-webkit-details-marker { display: none; }
+.puzzle-details > summary::before { content: "▸"; color: #e6b0a3; font-size: 16px; }
+.puzzle-details[open] > summary::before { content: "▾"; }
+.puzzle-details > summary > span:first-child { margin-right: auto; }
+.stage-status { color: #dbb1a8; font-size: 12px; font-weight: 500; }
+.stage.is-solved .stage-status { color: #dfc79f; }
+.puzzle-content { padding: 0 12px 20px; }
+.image-instruction, .last-intro { text-align: center; color: #e3c9c5; font-size: 14px; }
+.image-open {
+  display: block;
+  width: 100%;
+  padding: 0;
+  margin: 12px 0 18px;
+  background: transparent;
+  border: 0;
+  color: inherit;
+  text-align: center;
+}
+.image-open:focus-visible { outline: 3px solid #e4a999; outline-offset: 5px; }
+.puzzle-image { width: 100%; display: block; height: auto; border-radius: 4px; background: #dbcaac; }
+.zoom-hint { display: block; color: #dfb9b8; font-size: 12px; margin-top: 5px; }
+.answer-area { margin-top: 24px; }
+.answer-area label { display: block; font-size: 14px; font-weight: 700; margin-bottom: 7px; }
+.answer-area input {
+  display: block;
+  width: 100%;
+  min-height: 48px;
+  padding: 12px 13px;
+  border-radius: 6px;
+  border: 1px solid #c4a3a2;
+  background: #fff8f1;
+  color: #22171d;
+  font-size: 16px;
+}
+.answer-area input:focus { outline: 3px solid #cd8e92; outline-offset: 2px; }
+.answer-button {
+  display: block;
+  width: 100%;
+  margin-top: 12px;
+  padding: 12px 18px;
+  min-height: 48px;
+  border-radius: 7px;
+  border: 1px solid #d6a3a4;
+  color: white;
+  background: #842f49;
+  font-weight: 700;
+}
+.answer-button:hover, .answer-button:focus-visible { background: #a23b59; }
+.message { min-height: 20px; margin: 10px 0 0; font-size: 14px; color: #ffd1c2; }
+.stage.is-solved .answer-area { display: none; }
+.answer-record {
+  padding: 16px 21px;
+  margin: 12px 0 20px;
+  border: 1px solid #b99b83;
+  border-radius: 5px;
+  color: #3f302d;
+  background: #ebdcc5;
+}
+.answer-record p { margin: 0 0 7px; font-family: "Yu Mincho", serif; font-weight: 700; }
+.answer-record ol { margin: 0; padding-left: 1.9em; line-height: 2; }
+.ending {
+  text-align: center;
+  background: linear-gradient(135deg, #38212f, #4b2636, #2b1c2b);
+  border: 1px solid #c89b91;
+  border-radius: 14px;
+  padding: 40px 16px;
+  margin: 30px 0;
+}
+.ending h2 { font-family: "Yu Mincho", serif; font-size: clamp(24px, 6vw, 32px); }
+.ending-sign { margin-top: 28px; font-size: 13px; color: #e2bcb2; }
+.site-footer { text-align: center; padding: 26px 0 10px; color: #aa939a; font-size: 12px; }
+.reset-button { color: #cab1b7; border: 0; background: transparent; text-decoration: underline; padding: 8px 12px; }
+.reset-button:hover { color: white; }
+.image-dialog { width: min(98vw, 1200px); max-height: 94vh; padding: 10px; border-radius: 7px; background: #261a24; border: 1px solid #b48690; color: white; }
+.image-dialog::backdrop { background: rgba(5, 3, 8, .90); }
+.dialog-header { display: flex; justify-content: flex-end; margin-bottom: 8px; }
+.dialog-close { border: 1px solid #ab8791; background: #5b3545; color: white; border-radius: 6px; padding: 8px 14px; }
+#zoomed-image { display: block; max-width: 100%; max-height: calc(94vh - 83px); height: auto; width: auto; margin: auto; object-fit: contain; }
+@media (max-width: 480px) {
+  .container { padding-inline: 10px; }
+  .invitation { padding-top: 24px; }
+  .puzzle-content { padding: 0 9px 16px; }
+  .puzzle-details > summary { padding: 14px 12px; }
+  .progress { padding: 12px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .progress-bar { transition: none; }
+}
+
+
+/* 正解時に、各問題の画像へスタンプを重ねる */
+.image-open { position: relative; }
+.correct-stamp {
+  display: none;
+  position: absolute;
+  z-index: 2;
+  right: 4%;
+  bottom: 12%;
+  width: min(30%, 155px);
+  aspect-ratio: 1;
+  transform: rotate(12deg) scale(1);
+  pointer-events: none;
+  filter: drop-shadow(0 8px 8px rgba(34, 8, 18, .3));
+}
+.stage.is-solved .correct-stamp {
+  display: block;
+  animation: stamp-arrive .5s cubic-bezier(.18,.85,.3,1.22) both;
+}
+.stamp-art { display: block; width: 100%; height: 100%; object-fit: contain; }
+.stamp-fallback { display: none; }
+/* seikai.png がまだない場合も仮のスタンプが見える */
+.correct-stamp.image-missing .stamp-art { display: none; }
+.correct-stamp.image-missing .stamp-fallback {
+  display: flex;
+  width: 100%; height: 100%;
+  align-items: center; justify-content: center;
+  border: 7px double rgba(168, 33, 50, .9);
+  border-radius: 50%;
+  color: #ad283a;
+  font-family: "Yu Mincho", "Hiragino Mincho ProN", serif;
+  font-size: clamp(28px, 9vw, 72px);
+  font-weight: bold;
+  background: rgba(252, 246, 230, .35);
+}
+@keyframes stamp-arrive {
+  from { opacity: 0; transform: rotate(20deg) scale(1.5); }
+  to { opacity: 1; transform: rotate(12deg) scale(1); }
+}
+
+/* 次の謎の上部に入る物語。別枠にはせず、本文として表示する */
+.story-intro {
+  margin: 5px auto 20px;
+  padding: 0 7px 16px;
+  max-width: 34em;
+  border-bottom: 1px solid rgba(224, 174, 164, .35);
+  color: #f1d9cd;
+  text-align: center;
+  font-family: "Yu Mincho", "Hiragino Mincho ProN", serif;
+  font-size: clamp(15px, 3.8vw, 18px);
+  line-height: 2;
+}
+.ending-story {
+  color: #f1d9cd;
+  font-family: "Yu Mincho", "Hiragino Mincho ProN", serif;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stage.is-solved .correct-stamp { animation: none; }
+}
+
+/* 最後の合言葉「おともだち」正解後だけ表示するクリアイラスト */
+.clear-image {
+  display: block;
+  width: min(100%, 350px);
+  height: auto;
+  margin: 18px auto 22px;
+  object-fit: contain;
+  animation: clear-appear .65s ease-out both;
+}
+
+@keyframes clear-appear {
+  from { opacity: 0; transform: translateY(12px) scale(.94); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .clear-image { animation: none; }
+}
+
+
+/* 探索の記録を非表示 */
+.progress {
+    display: none;
+}

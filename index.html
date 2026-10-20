@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#1b1119">
+  <meta name="description" content="ラミィ・リンカー 1周年記念謎解きサイト">
+  <title>ラミィ・リンカー｜1周年記念謎解き</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <main class="container">
+    <header class="invitation">
+      <p class="eyebrow">LAMY LINKER · 1ST ANNIVERSARY</p>
+      <h1>1周年パーティーへの<br>招待状</h1>
+      <span class="flourish" aria-hidden="true">✦ ─── ❦ ─── ✦</span>
+      <p>ようこそ、お祝いの館へ。</p>
+      <p>五つの謎を解き、最後の部屋を目指そう。</p>
+      <p class="small-note">答えはひらがなで入力してね。</p>
+    </header>
+
+    <div class="progress" aria-live="polite">
+      <div class="progress-head">
+        <span>探索の記録</span>
+        <strong id="progress-label">0 / 5 問クリア</strong>
+      </div>
+      <div class="progress-track" aria-hidden="true">
+        <div id="progress-bar" class="progress-bar"></div>
+      </div>
+    </div>
+
+    <section class="stage" id="puzzle1" data-stage="0">
+      <details class="puzzle-details" open>
+        <summary><span>第1問</span><span class="stage-status">挑戦中</span></summary>
+        <div class="puzzle-content">
+          <button class="image-open" type="button" data-zoom="images/1.jpe" aria-label="第1問の画像を拡大する">
+            <img src="images/1.jpe" alt="第1問の謎解き画像" class="puzzle-image">
+            <span class="zoom-hint">画像をタップして拡大</span>
+          </button>
+          <form class="answer-area" data-answer="とけい" data-stage="0">
+            <label for="answer1">答えを入力</label>
+            <input id="answer1" type="text" placeholder="ひらがなで入力" autocomplete="off" autocapitalize="off" spellcheck="false" required>
+            <button class="answer-button" type="submit">回答する</button>
+            <p class="message" aria-live="polite"></p>
+          </form>
+        </div>
+      </details>
+    </section>
+
+    <section class="stage" id="puzzle2" data-stage="1" hidden>
+      <details class="puzzle-details">
+        <summary><span>第2問</span><span class="stage-status">挑戦中</span></summary>
+        <div class="puzzle-content">
+          <p class="story-intro">時計のそばを探すと、次の謎が見つかった。</p>
+          <button class="image-open" type="button" data-zoom="images/2.jpe" aria-label="第2問の画像を拡大する">
+            <img src="images/2.jpe" alt="第2問の謎解き画像" class="puzzle-image" loading="lazy">
+            <span class="zoom-hint">画像をタップして拡大</span>
+          </button>
+          <form class="answer-area" data-answer="だんろ" data-stage="1">
+            <label for="answer2">答えを入力</label>
+            <input id="answer2" type="text" placeholder="ひらがなで入力" autocomplete="off" autocapitalize="off" spellcheck="false" required>
+            <button class="answer-button" type="submit">回答する</button>
+            <p class="message" aria-live="polite"></p>
+          </form>
+        </div>
+      </details>
+    </section>
+
+    <section class="stage" id="puzzle3" data-stage="2" hidden>
+      <details class="puzzle-details">
+        <summary><span>第3問</span><span class="stage-status">挑戦中</span></summary>
+        <div class="puzzle-content">
+          <p class="story-intro">暖炉のそばで、古い紙切れを見つけた。そこには次の手がかりが記されている。</p>
+          <button class="image-open" type="button" data-zoom="images/3.jpe" aria-label="第3問の画像を拡大する">
+            <img src="images/3.jpe" alt="第3問の謎解き画像" class="puzzle-image" loading="lazy">
+            <span class="zoom-hint">画像をタップして拡大</span>
+          </button>
+          <form class="answer-area" data-answer="ものおき" data-stage="2">
+            <label for="answer3">答えを入力</label>
+            <input id="answer3" type="text" placeholder="ひらがなで入力" autocomplete="off" autocapitalize="off" spellcheck="false" required>
+            <button class="answer-button" type="submit">回答する</button>
+            <p class="message" aria-live="polite"></p>
+          </form>
+        </div>
+      </details>
+    </section>
+
+    <section class="stage" id="puzzle4" data-stage="3" hidden>
+      <details class="puzzle-details">
+        <summary><span>第4問</span><span class="stage-status">挑戦中</span></summary>
+        <div class="puzzle-content">
+          <p class="story-intro">物置の奥で、ひっそりと隠された扉を見つけた。まだ探索は終わらない。</p>
+          <button class="image-open" type="button" data-zoom="images/4-2.jpe" aria-label="第4問の迷路を拡大する">
+            <img src="images/4-2.jpe" alt="第4問の迷路" class="puzzle-image" loading="lazy">
+            <span class="zoom-hint">画像をタップして拡大</span>
+          </button>
+          <button class="image-open" type="button" data-zoom="images/4-1.jpe" aria-label="第4問の解答用画像を拡大する">
+            <img src="images/4-1.jpe" alt="第4問の解答用画像" class="puzzle-image" loading="lazy">
+            <span class="zoom-hint">画像をタップして拡大</span>
+          </button>
+          <form class="answer-area" data-answer="ちかしつ" data-stage="3">
+            <label for="answer4">答えを入力</label>
+            <input id="answer4" type="text" placeholder="ひらがなで入力" autocomplete="off" autocapitalize="off" spellcheck="false" required>
+            <button class="answer-button" type="submit">回答する</button>
+            <p class="message" aria-live="polite"></p>
+          </form>
+        </div>
+      </details>
+    </section>
+
+    <section class="stage" id="puzzle5" data-stage="4" hidden>
+      <details class="puzzle-details">
+        <summary><span>第5問</span><span class="stage-status">挑戦中</span></summary>
+        <div class="puzzle-content">
+          <p class="story-intro">地下室を調べていると、最後の招待状が姿を現した。</p>
+          <button class="image-open" type="button" data-zoom="images/5.jpe" aria-label="第5問の画像を拡大する">
+            <img src="images/5.jpe" alt="第5問の謎解き画像" class="puzzle-image" loading="lazy">
+            <span class="zoom-hint">画像をタップして拡大</span>
+          </button>
+          <form class="answer-area" data-answer="おいわい" data-stage="4">
+            <label for="answer5">答えを入力</label>
+            <input id="answer5" type="text" placeholder="ひらがなで入力" autocomplete="off" autocapitalize="off" spellcheck="false" required>
+            <button class="answer-button" type="submit">回答する</button>
+            <p class="message" aria-live="polite"></p>
+          </form>
+        </div>
+      </details>
+    </section>
+
+    <section class="stage last-stage" id="puzzle6" data-stage="5" hidden>
+      <details class="puzzle-details">
+        <summary><span>最後の謎</span><span class="stage-status">あと少し</span></summary>
+        <div class="puzzle-content">
+          <p class="story-intro">お祝いの準備は整った。あと必要なのは、最後の合言葉だけ。</p>
+          <p class="last-intro">五つの答えをもう一度見つめてみよう。</p>
+          <div class="answer-record">
+            <p>これまでの答え</p>
+            <ol>
+              <li>とけい</li>
+              <li>だんろ</li>
+              <li>ものおき</li>
+              <li>ちかしつ</li>
+              <li>おいわい</li>
+            </ol>
+          </div>
+          <button class="image-open" type="button" data-zoom="images/6.jpe" aria-label="最後の謎の画像を拡大する">
+            <img src="images/6.jpe" alt="最後の謎解き画像" class="puzzle-image" loading="lazy">
+            <span class="zoom-hint">画像をタップして拡大</span>
+          </button>
+          <form class="answer-area" data-answer="おともだち" data-stage="5">
+            <label for="answer6">最後の合言葉を入力</label>
+            <input id="answer6" type="text" placeholder="ひらがなで入力" autocomplete="off" autocapitalize="off" spellcheck="false" required>
+            <button class="answer-button" type="submit">合言葉を届ける</button>
+            <p class="message" aria-live="polite"></p>
+          </form>
+        </div>
+      </details>
+    </section>
+
+    <section class="ending" id="ending" hidden aria-live="polite">
+      <span class="ending-decoration" aria-hidden="true">✦ ❦ ✦</span>
+      <p class="eyebrow">CONGRATULATIONS</p>
+      <p class="ending-story">合言葉を唱えると、パーティーの扉が静かに開いた。</p>
+      <img src="images/kuria.png" alt="全問クリア！" class="clear-image">
+      <h2>パーティーへようこそ！</h2>
+      <p>最後まで謎を解いてくれて、ありがとう。</p>
+      <p>これからも、ラミィといっしょ。</p>
+      <p class="ending-sign">ラミィ・リンカー 1st Anniversary</p>
+    </section>
+
+    <footer class="site-footer">
+      <p>ラミィ・リンカー 1周年記念謎解き</p>
+      <button type="button" class="reset-button" id="reset-button">最初からやり直す</button>
+    </footer>
+  </main>
+
+  <dialog id="image-dialog" class="image-dialog" aria-label="謎解き画像の拡大表示">
+    <div class="dialog-header">
+      <button type="button" id="close-dialog" class="dialog-close">閉じる ✕</button>
+    </div>
+    <img id="zoomed-image" alt="拡大した謎解き画像">
+  </dialog>
+</body>
+</html>
