@@ -250,3 +250,31 @@ button { cursor: pointer; }
 .progress {
     display: none;
 }
+
+
+
+/* 正解後、入力した答えを回答欄の位置に残す */
+.solved-answer { display: none; }
+.stage.is-solved .solved-answer {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: center;
+  margin: 24px 0 4px;
+  padding: 13px 15px;
+  border: 1px solid rgba(219, 181, 146, .45);
+  border-radius: 8px;
+  background: rgba(27, 17, 25, .35);
+  text-align: center;
+}
+.solved-answer-label {
+  color: #dfc6b9;
+  font-size: 12px;
+}
+.solved-answer-value {
+  color: #ffe1be;
+  font-family: "Yu Mincho", "Hiragino Mincho ProN", serif;
+  font-size: 20px;
+  letter-spacing: .12em;
+  overflow-wrap: anywhere;
+}

@@ -6,12 +6,14 @@ const STAMP_IMAGE_PATH = "images/seikai.png";
 
 
 const STORAGE_KEY = "ramii_anniversary_progress_v2";
+const ANSWERS_STORAGE_KEY = "ramii_anniversary_submitted_answers_v1";
 const TOTAL_STAGES = 6;
 const sections = [...document.querySelectorAll(".stage")];
 const progressLabel = document.getElementById("progress-label");
 const progressBar = document.getElementById("progress-bar");
 const ending = document.getElementById("ending");
 let progress = loadProgress();
+let submittedAnswers = loadSubmittedAnswers();
 let nextStageTimer = null;
 
 function loadProgress() {
@@ -28,6 +30,27 @@ function saveProgress() {
     localStorage.setItem(STORAGE_KEY, String(progress));
   } catch (error) {
     // 保存できない環境でも現在のページ内では回答可能。
+  }
+}
+
+// 正解時に入力された文字を保存。既に解いた人の分は正解文字列で補完する。
+function loadSubmittedAnswers() {
+  try {
+    const stored = JSON.parse(localStorage.getItem(ANSWERS_STORAGE_KEY) || "[]");
+    return Array.isArray(stored)
+      ? Array.from({ length: TOTAL_STAGES }, (_, i) =>
+          typeof stored[i] === "string" ? stored[i] : "")
+      : Array(TOTAL_STAGES).fill("");
+  } catch (error) {
+    return Array(TOTAL_STAGES).fill("");
+  }
+}
+
+function saveSubmittedAnswers() {
+  try {
+    localStorage.setItem(ANSWERS_STORAGE_KEY, JSON.stringify(submittedAnswers));
+  } catch (error) {
+    // 保存できない環境では再読み込み後に正解文字列を表示する。
   }
 }
 
@@ -65,6 +88,21 @@ sections.forEach((section, index) => {
     // 第4問の「2枚の画像を使おう」の案内よりも前に置く。
     const first = content.firstElementChild;
     content.insertBefore(intro, first);
+  }
+
+  // 正解済みの問題を開いたとき、回答欄の位置に入力した答えを残す。
+  const form = section.querySelector(".answer-area");
+  let solvedAnswer = section.querySelector(".solved-answer");
+  if (form && !solvedAnswer) {
+    solvedAnswer = document.createElement("p");
+    solvedAnswer.className = "solved-answer";
+    const label = document.createElement("span");
+    label.className = "solved-answer-label";
+    label.textContent = "あなたの答え";
+    const value = document.createElement("strong");
+    value.className = "solved-answer-value";
+    solvedAnswer.append(label, value);
+    form.after(solvedAnswer);
   }
 
   // 各問題の画像の右下にスタンプを重ねる。
@@ -112,6 +150,13 @@ function renderProgress(justSolved = -1) {
     const isSolved = index < progress;
     section.hidden = !isVisible;
     section.classList.toggle("is-solved", isSolved);
+    if (isSolved) {
+      const value = section.querySelector(".solved-answer-value");
+      const form = section.querySelector(".answer-area");
+      if (value && form) {
+        value.textContent = submittedAnswers[index] || form.dataset.answer;
+      }
+    }
     section.querySelector(".stage-status").textContent = isSolved
       ? "解決済み"
       : index === 5 ? "あと少し" : "挑戦中";
@@ -143,6 +188,8 @@ for (const form of document.querySelectorAll(".answer-area")) {
     }
 
     message.textContent = "正解！";
+    submittedAnswers[index] = input.value.trim();
+    saveSubmittedAnswers();
     progress += 1;
     saveProgress();
     renderProgress(index);
@@ -196,7 +243,11 @@ document.getElementById("reset-button").addEventListener("click", () => {
     nextStageTimer = null;
   }
   progress = 0;
-  try { localStorage.removeItem(STORAGE_KEY); } catch (error) { /* 保存無効 */ }
+  submittedAnswers = Array(TOTAL_STAGES).fill("");
+  try {
+    localStorage.removeItem(STORAGE_KEY);
+    localStorage.removeItem(ANSWERS_STORAGE_KEY);
+  } catch (error) { /* 保存無効 */ }
   for (const form of document.querySelectorAll(".answer-area")) {
     form.reset();
     form.querySelector(".message").textContent = "";
